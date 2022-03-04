@@ -19,23 +19,53 @@ window.addEventListener('keydown', (e) => {
 	let posun = 10;
 	let top = window.getComputedStyle(panacek).getPropertyValue('top');
 	let left = window.getComputedStyle(panacek).getPropertyValue('left');
+	let right = window.getComputedStyle(panacek).getPropertyValue('right');
+	let bottom = window.getComputedStyle(panacek).getPropertyValue('bottom');
 
-    switch (e.key) {
+	switch (e.key) {
         case 'ArrowLeft':
-            panacek.style.left = parseInt(left) - posun + 'px';
-			document.getElementById('panacek').src = 'obrazky/panacek-vlevo.png';
+			if (parseInt(left) >= 10) {
+				panacek.style.left = parseInt(left) - posun + 'px';
+				document.getElementById('panacek').src = 'obrazky/panacek-vlevo.png';
+			}
+            
+			else {
+				panacek.style.left = parseInt(left) + 'px';
+				document.getElementById('panacek').src = 'obrazky/panacek.png';
+			}
             break;
         case 'ArrowRight':
-            panacek.style.left = parseInt(left) + posun + 'px';
-			document.getElementById('panacek').src = 'obrazky/panacek-vpravo.png';
+			if (parseInt(right) >= 10) {
+            	panacek.style.left = parseInt(left) + posun + 'px';
+				document.getElementById('panacek').src = 'obrazky/panacek-vpravo.png';
+			}
+            
+			else {
+				panacek.style.left = parseInt(left) + 'px';
+				document.getElementById('panacek').src = 'obrazky/panacek.png';
+			}
             break;
         case 'ArrowUp':
-            panacek.style.top = parseInt(top) - posun + 'px';
-			document.getElementById('panacek').src = 'obrazky/panacek-nahoru.png';
+			if (parseInt(top) >= 10) {
+            	panacek.style.top = parseInt(top) - posun + 'px';
+				document.getElementById('panacek').src = 'obrazky/panacek-nahoru.png';
+			}
+            
+			else {
+				panacek.style.left = parseInt(left) + 'px';
+				document.getElementById('panacek').src = 'obrazky/panacek.png';
+			}
             break;
         case 'ArrowDown':
-            panacek.style.top = parseInt(top) + posun + 'px';
-			document.getElementById('panacek').src = 'obrazky/panacek.png';
+			if (parseInt(bottom) >= 10) {
+           		panacek.style.top = parseInt(top) + posun + 'px';
+				document.getElementById('panacek').src = 'obrazky/panacek.png';
+			}
+            
+			else {
+				panacek.style.left = parseInt(left) + 'px';
+				document.getElementById('panacek').src = 'obrazky/panacek.png';
+			}
             break;
     }
 })
