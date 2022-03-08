@@ -105,6 +105,8 @@ function dejMinci() {
 function sezerMinci() {
 	let mince = document.querySelector('#mince');
 	let panacek = document.querySelector('#panacek');
+	let currentTop = parseInt(window.getComputedStyle(panacek).getPropertyValue("top"));
+  	let currentLeft = parseInt(window.getComputedStyle(panacek).getPropertyValue("left"));
 	let minceY = parseInt(window.getComputedStyle(mince).getPropertyValue("top"));
 	let minceX = parseInt(window.getComputedStyle(mince).getPropertyValue("left"));
 	let panacekSirka = parseInt(window.getComputedStyle(panacek).getPropertyValue("width"));
@@ -116,7 +118,7 @@ function sezerMinci() {
 		let score = 0;
 		score++;
 		document.getElementById("score").innerHTML = score;
-		dejMinci();
+		dejMnci();
 	}
 
 	
