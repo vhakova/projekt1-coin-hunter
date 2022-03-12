@@ -28,6 +28,8 @@ function umistiPanacka() {
 	panacek.style.left = stred;
 }
 
+let score = 0;
+let body;
 
 //Pohyb panáčka
 window.addEventListener('keydown', (e) => {
@@ -80,21 +82,31 @@ window.addEventListener('keydown', (e) => {
 
 function dejMinci() {
 	let mince = document.querySelector('#mince');
-	let sirkaMince = mince.width;
-	let vyskaMince = mince.height;
-	let minceX = Math.floor(Math.random() * window.innerWidth + sirkaMince);
-	let minceY = Math.floor(Math.random() * window.innerHeight + vyskaMince);
+	let posun = 10;
+	let minceX = Math.ceil(Math.random() * window.innerWidth + posun);
+	let minceY = Math.ceil(Math.random() * window.innerHeight + posun);
+
 	mince.style.top = minceY + 'px';
 	mince.style.left = minceX + 'px';
 
+	let top = window.getComputedStyle(mince).getPropertyValue('top');
+	let left = window.getComputedStyle(mince).getPropertyValue('left');
+	let right = window.getComputedStyle(mince).getPropertyValue('right');
+	let bottom = window.getComputedStyle(mince).getPropertyValue('bottom');
+	
 	let random = Math.random();
 
-	if (random < 0.3) {
+	if ((random < 0.3) && (parseInt(left) >= posun) && (parseInt(top) >= posun) && (parseInt(bottom) >= posun) && (parseInt(right) >= posun))  {
 		mince.src = 'obrazky/mince-bronzova.png';
-	} else if (random >= 0.3 && random <= 0.6) {
+		body = 5;
+	} else if (random >= 0.3 && random <= 0.6 && (parseInt(left) >= posun) && (parseInt(top) >= posun) && (parseInt(bottom) >= posun) && (parseInt(right) >= posun)) {
 		mince.src = 'obrazky/mince-stribrna.png';
-	} else {
+		body = 10;
+	} else if (random >= 0.6 && (parseInt(left) >= posun) && (parseInt(top) >= posun) && (parseInt(bottom) >= posun) && (parseInt(right) >= posun)){
 		mince.src = 'obrazky/mince.png';
+		body = 15;
+	} else {
+		dejMinci();
 	}
 
 }
@@ -115,10 +127,13 @@ function sezerMinci() {
 	let minceVyska = parseInt(window.getComputedStyle(mince).getPropertyValue("height"));
   
 	if (!(currentLeft + panacekSirka < minceX || minceX + minceSirka < currentLeft || currentTop + panacekVyska < minceY || minceY + minceVyska < currentTop)) {
-		let score = 0;
-		score++;
-		document.getElementById("score").innerHTML = score;
-		dejMnci();
+
+		score = score + body;
+      	document.getElementById("score").innerHTML = score;
+		
+		console.log (score);
+
+		dejMinci();
 	}
 
 	
