@@ -46,7 +46,65 @@ body {
 	position: absolute;
 }
 
+#mince {
+	z-index: -1;
+}
+
 #panacek {
+	z-index: 0;
+}
+
+#konec {
+	display: none;
+}
+
+#uvod, #konec {
+	position: relative;
 	z-index: 1;
+	max-width: 50vw;
+	margin: 5% 25%;
+}
+
+#hello, #bye {
+	padding: 50px;
+	text-align: center;
+	font-family: 'Courier New', Courier, monospace;
+	font-weight: bold;
+	font-size: 30px;
+	color: aliceblue;
+	line-height: 3;
+	background-color: palevioletred;
+	border: 1px solid aliceblue;
+	border-radius: 5px;
+	box-shadow: 3px 3px 20px grey;
+}
+
+#start, #znovu {
+	max-width: 50%;
+	margin: 50px auto;
+	text-align: center;
+	font-family:'Courier New', Courier, monospace;
+	font-weight: bold;
+	font-size: 30px;
+	color: aliceblue;
+	line-height: 3;
+	background-color: palevioletred;
+	border: 1px solid aliceblue;
+	border-radius: 5px;
+	box-shadow: 3px 3px 20px grey;
+}
+
+#monster {
+	position: absolute;
+	bottom: 50px;
+	right: 0;
+	width: 150px;
+}
+
+#priserka {
+	position: absolute;
+	bottom: 0px;
+	right: 0;
+	width: 150px;
 }
 
